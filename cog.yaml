@@ -1,0 +1,16 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+build:
+  gpu: true
+  system_packages:
+    - "wget"
+    - "cmake"
+    - "g++"
+    - "build-essential"
+  python_version: "3.11"
+
+  run:
+    - "CMAKE_ARGS='-DLLAMA_CUBLAS=on' FORCE_CMAKE=1 pip install llama-cpp-python --no-cache-dir"
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
